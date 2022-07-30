@@ -13,12 +13,24 @@ def get_emotions(text):
 
 
 def sentiment_prediction(text):
-    _sc = TextBlob(text).sentiment.polarity
-    if _sc > 0.2:
-        return {'sentiment': 'positive'}
-    if -0.1 < _sc < 0.2:
-        return {'sentiment': 'neutral'}
+    t_b = TextBlob(text)
+    _polarity = t_b.sentiment.polarity
+    _subjectivity = t_b.sentiment.subjectivity
+    _resp = {}
+    if _polarity > 0.2:
+        _resp['polarity'] = 'positive'
+    if -0.1 < _polarity < 0.2:
+        _resp['polarity'] = 'neutral'
     else:
-        return {'sentiment': 'negative'}
+        _resp['polarity'] = 'negative'
+    _resp['polarity_score'] = _polarity
+    _resp['subjectivity_score'] = _subjectivity
+    _resp['highlights'] = []
+
+    for token in t_b.sentiment_assessments.assessments:
+        _resp['highlights'].append({'word': token[0][0], 'polarity': token[1], 'subjectivity': token[2]})
+
+    return _resp
 
 
+print(sentiment_prediction('hate you idiot'))
