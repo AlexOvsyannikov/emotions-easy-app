@@ -12,8 +12,8 @@ def get_emotions(text):
     return emo
 
 
-def sentiment_prediction(x):
-    _sc = TextBlob(x).sentiment.polarity
+def sentiment_prediction(text):
+    _sc = TextBlob(text).sentiment.polarity
     if _sc > 0.2:
         return {'sentiment': 'positive'}
     if -0.1 < _sc < 0.2:
