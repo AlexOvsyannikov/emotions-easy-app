@@ -17,7 +17,7 @@ def emotion():  # put application's code here
     if request.method == 'GET':
         return get_emotions(text=request.args.get('text', 'NoNe'))
     else:
-        if request.args.get('key') == UNIVERSAL_KEY:
+        if request.form.get('key') == UNIVERSAL_KEY:
             return get_emotions(text=request.form.get('text', 'NoNe'))
         else:
             return Response(status=401, response="USE API KEY")
@@ -28,7 +28,7 @@ def sentiment():  # put application's code here
     if request.method == 'GET':
         return sentiment_prediction(text=request.args.get('text', 'NoNe'))
     else:
-        if request.args.get('key') == UNIVERSAL_KEY:
+        if request.form.get('key') == UNIVERSAL_KEY:
             return sentiment_prediction(text=request.form.get('text', 'NoNe'))
         else:
             return Response(status=401, response="USE API KEY")
