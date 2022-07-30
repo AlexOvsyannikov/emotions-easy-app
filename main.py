@@ -1,5 +1,6 @@
 from flask import Flask, request, Response
 from modeule import get_emotions, sentiment_prediction
+
 app = Flask(__name__)
 
 UNIVERSAL_KEY = "AlexOffTheBest"
