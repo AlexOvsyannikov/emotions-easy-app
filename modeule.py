@@ -19,7 +19,7 @@ def sentiment_prediction(text):
     _resp = {}
     if _polarity > 0.2:
         _resp['polarity'] = 'positive'
-    if -0.1 < _polarity < 0.2:
+    elif -0.1 < _polarity < 0.2:
         _resp['polarity'] = 'neutral'
     else:
         _resp['polarity'] = 'negative'
@@ -33,4 +33,4 @@ def sentiment_prediction(text):
     return _resp
 
 
-print(sentiment_prediction('hate you idiot'))
+# print(sentiment_prediction('you are the best man on earth'))
